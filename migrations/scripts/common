@@ -1,0 +1,18 @@
+
+PACKAGE_ROOT=$(realpath $HERE/..)
+PACKAGE_NAME=hint-db-migrate
+
+GIT_SHA=$(git -C "$PACKAGE_ROOT" rev-parse --short=7 HEAD)
+
+if [ -z "$TRAVIS_BRANCH" ]; then
+    GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
+else
+    GIT_BRANCH=$TRAVIS_BRANCH
+fi
+
+if [ $GIT_BRANCH == "master" ]; then
+   GIT_BRANCH="latest"
+fi
+
+TAG_SHA="mrcide/${PACKAGE_NAME}:${GIT_SHA}"
+TAG_BRANCH="mrcide/${PACKAGE_NAME}:${GIT_BRANCH}"
