@@ -8,7 +8,7 @@ if [ -z "$TRAVIS_BRANCH" ]
 then
     GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
 else
-    GIT_BRANCH =$ TRAVIS_BRANCH
+    GIT_BRANCH=$TRAVIS_BRANCH
 fi
 
 if [ $GIT_BRANCH == "master" ]; then
