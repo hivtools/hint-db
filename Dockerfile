@@ -16,7 +16,5 @@ RUN cat /etc/hint/postgresql.conf /etc/hint/postgresql.production.conf.in > \
 RUN chown -R postgres:postgres /etc/hint
 RUN ./docker-entrypoint.sh --version
 
-RUN cp /hint-bin/create-users.sh /docker-entrypoint-initdb.d/
-
 ENTRYPOINT ["/hint-bin/start-with-config.sh"]
 CMD ["/etc/hint/postgresql.conf"]
