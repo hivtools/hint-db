@@ -4,7 +4,7 @@ PACKAGE_NAME=hint-db
 
 GIT_SHA=$(git -C "$PACKAGE_ROOT" rev-parse --short=7 HEAD)
 
-if [ -z "$TRAVIS_BRANCH" ] then
+if [ -z "$TRAVIS_BRANCH" ]; then
     GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
 else
     GIT_BRANCH=$TRAVIS_BRANCH
