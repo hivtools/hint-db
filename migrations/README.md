@@ -8,20 +8,20 @@ Add a new file to `sql`. This should be named following this scheme:
 Vyear.month.day.hour.minute__Description.sql
 ```
 
-These migrations can be applied by running the `modelserver_db_migrate` image. 
+These migrations can be applied by running the `hint-db-migrate` image. 
 
 This image will be run by the 
-`run-dependencies.sh` script after starting the database image `modelserver_db`.
+`run-dependencies.sh` script in the web application repo after starting the database image `hint-db`.
 
-The `modelserver_db_migrate` image can be built and pushed from the `/db/migrations` folder by
+The `hint-db` image can be built and pushed from the `/migrations` folder by
 running `./scripts/build` and `./scripts/push`
 
 This image expects the database to be running and accessible 
 at:
 
-* host: `modelserver-db`
+* host: `hint-db`
 * port: `5432`
-* user: `hint`
+* user: `hintuser`
 * password: `changeme`
 
 You can override these by passing in command line options. Please see the Flyway

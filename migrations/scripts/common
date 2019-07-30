@@ -1,6 +1,6 @@
 
 PACKAGE_ROOT=$(realpath $HERE/..)
-PACKAGE_NAME=modelserver_db_migrate
+PACKAGE_NAME=hint-db-migrate
 
 GIT_SHA=$(git -C "$PACKAGE_ROOT" rev-parse --short=7 HEAD)
 GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
