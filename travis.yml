@@ -1,0 +1,4 @@
+language: bash
+
+scripts:
+  - ./scripts/travis.sh
