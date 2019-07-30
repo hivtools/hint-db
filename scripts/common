@@ -3,7 +3,14 @@ PACKAGE_ROOT=$(realpath $HERE/..)
 PACKAGE_NAME=hint-db
 
 GIT_SHA=$(git -C "$PACKAGE_ROOT" rev-parse --short=7 HEAD)
-GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
+
+if [ -z "$TRAVIS_BRANCH" ]
+then
+    GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
+else
+    GIT_BRANCH =$ TRAVIS_BRANCH
+fi
+
 if [ $GIT_BRANCH == "master" ]; then
    GIT_BRANCH="latest"
 fi
