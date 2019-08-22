@@ -10,6 +10,5 @@ CREATE TABLE users
 
 CREATE TABLE onetime_token
 (
-  id serial primary key,
-  token text not null
+  token text primary key
 );
