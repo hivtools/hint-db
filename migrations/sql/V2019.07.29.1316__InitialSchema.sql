@@ -7,3 +7,9 @@ CREATE TABLE users
   serializedprofile varchar(10000),
   PRIMARY KEY ("id")
 );
+
+CREATE TABLE onetime_token
+(
+  id serial primary key,
+  token text not null
+);
