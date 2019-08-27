@@ -10,9 +10,5 @@ else
     GIT_BRANCH=$TRAVIS_BRANCH
 fi
 
-if [ $GIT_BRANCH == "master" ]; then
-   GIT_BRANCH="latest"
-fi
-
 TAG_SHA="mrcide/${PACKAGE_NAME}:${GIT_SHA}"
 TAG_BRANCH="mrcide/${PACKAGE_NAME}:${GIT_BRANCH}"
