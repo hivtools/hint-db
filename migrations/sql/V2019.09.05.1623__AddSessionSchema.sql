@@ -6,10 +6,12 @@ CREATE TABLE user_session
 
 CREATE TABLE session_files
 (
-    session   TEXT references user_session (session),
-    pjnz      TEXT,
-    programme TEXT,
-    survey    TEXT,
-    anc       TEXT,
-    shape     TEXT
-)
+    session   TEXT primary key,
+    pjnz      TEXT null,
+    programme TEXT null,
+    survey    TEXT null,
+    anc       TEXT null,
+    shape     TEXT null
+);
+
+ALTER TABLE session_files ADD FOREIGN KEY (session) REFERENCES user_session (session);
