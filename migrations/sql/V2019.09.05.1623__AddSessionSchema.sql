@@ -7,11 +7,12 @@ CREATE TABLE user_session
 CREATE TABLE session_files
 (
     session   TEXT primary key,
-    pjnz      TEXT null,
-    programme TEXT null,
-    survey    TEXT null,
     anc       TEXT null,
-    shape     TEXT null
+    pjnz      TEXT null,
+    population TEXT null,
+    programme TEXT null,
+    shape       TEXT null,
+    survey    TEXT null
 );
 
 ALTER TABLE session_files ADD FOREIGN KEY (session) REFERENCES user_session (session);
