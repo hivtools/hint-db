@@ -10,8 +10,9 @@ CREATE TABLE file(
 
 CREATE TABLE session_file
 (
-    session   TEXT primary key references user_session (session),
+    session   TEXT references user_session (session),
     hash      TEXT references file (hash),
     type      TEXT,
-    fileName  TEXT
+    fileName  TEXT,
+    primary key (session, hash)
 );
