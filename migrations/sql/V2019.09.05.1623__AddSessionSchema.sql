@@ -4,15 +4,16 @@ CREATE TABLE user_session
     user_id TEXT references users (id)
 );
 
+CREATE TABLE file(
+    hash TEXT primary key
+);
+
 CREATE TABLE session_files
 (
     session   TEXT primary key,
-    anc       TEXT null,
-    pjnz      TEXT null,
-    population TEXT null,
-    programme TEXT null,
-    shape       TEXT null,
-    survey    TEXT null
+    file      TEXT,
+    type      TEXT
 );
 
 ALTER TABLE session_files ADD FOREIGN KEY (session) REFERENCES user_session (session);
+ALTER TABLE session_files ADD FOREIGN KEY (file) REFERENCES file (hash);
