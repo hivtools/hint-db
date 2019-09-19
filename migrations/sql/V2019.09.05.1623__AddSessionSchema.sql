@@ -5,13 +5,13 @@ CREATE TABLE user_session
 );
 
 CREATE TABLE file(
-    hash TEXT primary key,
-    fileName TEXT
+    hash TEXT primary key
 );
 
-CREATE TABLE session_files
+CREATE TABLE session_file
 (
     session   TEXT primary key references user_session (session),
-    file      TEXT references file (hash),
-    type      TEXT
+    hash      TEXT references file (hash),
+    type      TEXT,
+    fileName  TEXT
 );
