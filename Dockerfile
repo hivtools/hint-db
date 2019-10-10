@@ -1,6 +1,6 @@
 FROM postgres:10.3
 COPY bin /hint-bin
-ENV PATH="hint-bin:$PATH"
+ENV PATH="/hint-bin:$PATH"
 ENV POSTGRES_DB hint
 ENV POSTGRES_USER hintuser
 ENV POSTGRES_PASSWORD changeme

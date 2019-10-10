@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
+docker kill $(docker ps -aq) 2> /dev/null || true
+docker container prune --force
 docker network prune --force
 exit 0
