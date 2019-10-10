@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 GIT_BRANCH=$(git -C "$PACKAGE_ROOT" symbolic-ref --short HEAD)
 docker run --rm -d --network=host --name hint-db mrcide/hint-db:$GIT_BRANCH
 
