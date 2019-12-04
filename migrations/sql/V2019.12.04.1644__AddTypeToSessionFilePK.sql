@@ -1,5 +1,5 @@
 ALTER TABLE session_file
-  DROP PRIMARY KEY;
+  DROP CONSTRAINT session_file_pk;
 
 ALTER TABLE session_file
   ADD CONSTRAINT session_file_pk
