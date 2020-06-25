@@ -1,6 +1,6 @@
 CREATE TABLE version
 (
-    id SERIAL,
+    id SERIAL PRIMARY KEY,
     user_id TEXT references users (id),
     name TEXT NOT NULL,
     note TEXT
