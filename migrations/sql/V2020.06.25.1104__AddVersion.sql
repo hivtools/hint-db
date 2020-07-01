@@ -15,7 +15,7 @@ CREATE TABLE version_snapshot
     created TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
     updated TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
     deleted BOOLEAN DEFAULT FALSE
-)
+);
 
 
 CREATE TABLE snapshot_file
@@ -25,4 +25,4 @@ CREATE TABLE snapshot_file
     type      TEXT,
     fileName  TEXT,
     PRIMARY KEY (snapshot, hash, type)
-)
+);
