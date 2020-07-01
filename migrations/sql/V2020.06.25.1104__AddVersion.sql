@@ -6,10 +6,23 @@ CREATE TABLE version
     note TEXT
 );
 
-ALTER TABLE user_session
-ADD COLUMN version_id INTEGER references version (id),
-ADD COLUMN state TEXT,
-ADD COLUMN note TEXT,
-ADD COLUMN created TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
-ADD COLUMN updated TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
-ADD COLUMN deleted BOOLEAN DEFAULT FALSE;
+CREATE TABLE version_snapshot
+(
+    id TEXT PRIMARY KEY,
+    version_id INTEGER references version (id),
+    state TEXT,
+    note TEXT,
+    created TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
+    updated TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
+    deleted BOOLEAN DEFAULT FALSE
+)
+
+
+CREATE TABLE snapshot_file
+(
+    snapshot  TEXT references version_snapshot (id),
+    hash      TEXT references file (hash),
+    type      TEXT,
+    fileName  TEXT,
+    PRIMARY KEY (snapshot, hash, type)
+)
