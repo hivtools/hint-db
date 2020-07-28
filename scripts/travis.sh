@@ -14,4 +14,5 @@ echo $DOCKER_PASSWORD | \
 
 cd migrations
 ./scripts/build
+./scripts/test
 ./scripts/push
