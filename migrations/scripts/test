@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -ex
+
+HERE=$(dirname $0)
+. $HERE/common
+
+NETWORK=hint-db
+DB=db
+
+docker network create $NETWORK
+
+docker run --rm -d \
+  --network=$NETWORK \
+  --name $DB \
+  --network-alias db \
+  -p 5432:5432 \
+  $TAG_DB
+
+# Need to give the database a little time to initialise before we can run the migrations
+docker exec -it $DB wait-for-db
+docker run --rm --network=$NETWORK \
+  $TAG_SHA \
+  -url=jdbc:postgresql://$DB/hint
