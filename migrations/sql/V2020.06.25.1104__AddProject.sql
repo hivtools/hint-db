@@ -1,4 +1,4 @@
-CREATE TABLE version
+CREATE TABLE project
 (
     id SERIAL PRIMARY KEY,
     user_id TEXT references users (id),
@@ -6,10 +6,10 @@ CREATE TABLE version
     note TEXT
 );
 
-CREATE TABLE version_snapshot
+CREATE TABLE project_version
 (
     id TEXT PRIMARY KEY,
-    version_id INTEGER references version (id),
+    project_id INTEGER references version (id),
     state TEXT,
     note TEXT,
     created TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
@@ -18,11 +18,11 @@ CREATE TABLE version_snapshot
 );
 
 
-CREATE TABLE snapshot_file
+CREATE TABLE version_file
 (
-    snapshot  TEXT references version_snapshot (id),
+    version  TEXT references project_version (id),
     hash      TEXT references file (hash),
     type      TEXT,
     fileName  TEXT,
-    PRIMARY KEY (snapshot, hash, type)
+    PRIMARY KEY (version, hash, type)
 );

@@ -6,6 +6,6 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
-CREATE TRIGGER version_snapshot_updated BEFORE UPDATE
-    ON version_snapshot FOR EACH ROW EXECUTE PROCEDURE
+CREATE TRIGGER project_version_updated BEFORE UPDATE
+    ON project_version FOR EACH ROW EXECUTE PROCEDURE
     set_updated_to_utc_now();

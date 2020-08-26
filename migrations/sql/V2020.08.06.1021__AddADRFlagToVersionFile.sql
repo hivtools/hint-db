@@ -1,2 +1,2 @@
-ALTER TABLE snapshot_file
+ALTER TABLE version_file
   ADD COLUMN from_ADR BOOLEAN DEFAULT FALSE;
