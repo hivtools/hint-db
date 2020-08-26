@@ -9,7 +9,7 @@ CREATE TABLE project
 CREATE TABLE project_version
 (
     id TEXT PRIMARY KEY,
-    project_id INTEGER references version (id),
+    project_id INTEGER references project (id),
     state TEXT,
     note TEXT,
     created TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() at time zone 'utc'),
