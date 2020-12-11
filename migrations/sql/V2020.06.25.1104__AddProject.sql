@@ -3,7 +3,7 @@ CREATE TABLE project
     id SERIAL PRIMARY KEY,
     user_id TEXT references users (id),
     name TEXT NOT NULL,
-    shared_by TEXT,
+    shared_by TEXT references users (id),
     note TEXT
 );
 
