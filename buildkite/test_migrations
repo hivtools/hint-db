@@ -4,6 +4,8 @@ set -ex
 NETWORK=hint-db
 DB=db
 
+TAG_DB="mrcide/hint-db:${GIT_ID}"
+
 docker network create $NETWORK
 
 docker run --rm -d \
