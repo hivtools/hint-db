@@ -3,6 +3,6 @@ steps:
     command: buildkite/db.sh
 
   - wait
-  -
+
   - label: ":construction_worker: Build and push migrations"
     command: buildkite/migrations.sh
