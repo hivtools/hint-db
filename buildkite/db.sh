@@ -8,7 +8,6 @@ TAG_SHA="mrcide/${IMAGE_NAME}:${GIT_ID}"
 TAG_BRANCH="mrcide/${IMAGE_NAME}:${GIT_BRANCH}"
 PACKAGE_ROOT=$(realpath $HERE/..)
 
-cd ..
 docker build \
        -f Dockerfile \
        -t "$TAG_SHA" \

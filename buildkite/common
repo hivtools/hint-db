@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -ex
-HERE=$(realpath "$(dirname $0)")
 
 if [ "$BUILDKITE" = "true" ]; then
     GIT_ID=${BUILDKITE_COMMIT:0:7}
