@@ -15,7 +15,7 @@ cd $PACKAGE_ROOT && docker build \
        -t "$TAG_BRANCH" \
        $PACKAGE_ROOT
 
-. $HERE/test_migrations.sh
+. $HERE/test_migrations
 
 docker push $TAG_SHA
 docker push $TAG_BRANCH
