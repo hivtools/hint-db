@@ -4,7 +4,11 @@ set -e
 HERE=$(dirname $0)
 . $HERE/common
 
-cd ../migrations
+IMAGE_NAME=hint-db-migrate
+TAG_SHA="mrcide/${IMAGE_NAME}:${GIT_ID}"
+TAG_BRANCH="mrcide/${IMAGE_NAME}:${GIT_BRANCH}"
+PACKAGE_ROOT=$(realpath $HERE/../migrations)
+
 docker build \
        -f Dockerfile \
        -t "$TAG_SHA" \
