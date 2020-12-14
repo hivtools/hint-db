@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -ex
 
+function cleardocker() {
+  $HERE/../scripts/clear-docker.sh
+}
+trap cleardocker EXIT
+
 NETWORK=hint-db
 DB=db
 
