@@ -9,11 +9,11 @@ TAG_SHA="mrcide/${IMAGE_NAME}:${GIT_ID}"
 TAG_BRANCH="mrcide/${IMAGE_NAME}:${GIT_BRANCH}"
 PACKAGE_ROOT=$(realpath $HERE/../migrations)
 
-cd $PACKAGE_ROOT && docker build \
+(cd $PACKAGE_ROOT && docker build \
        -f Dockerfile \
        -t "$TAG_SHA" \
        -t "$TAG_BRANCH" \
-       $PACKAGE_ROOT
+       $PACKAGE_ROOT)
 
 . $HERE/test_migrations
 
