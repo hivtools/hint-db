@@ -1,0 +1,2 @@
+ALTER TABLE project
+    ADD COLUMN isUploaded BOOLEAN DEFAULT FALSE;
