@@ -1,0 +1,2 @@
+ALTER TABLE project
+    ADD COLUMN is_uploaded BOOLEAN DEFAULT FALSE;
