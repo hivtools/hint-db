@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 set -ex
 
+HERE=$(dirname $0)
+
 function cleardocker() {
-  $HERE/../scripts/clear-docker.sh
+  $HERE/clear-docker.sh
 }
 trap cleardocker EXIT
 
+
+
 NETWORK=hint-db
 DB=db
-
-TAG_DB="mrcide/hint-db:${GIT_ID}"
 
 docker network create $NETWORK
 
@@ -21,7 +23,7 @@ docker run --rm -d \
   $TAG_DB
 
 # Need to give the database a little time to initialise before we can run the migrations
-docker exec -it $DB wait-for-db
+docker exec $DB wait-for-db
 docker run --rm --network=$NETWORK \
-  $TAG_SHA \
+  $TAG_MIGRATION \
   -url=jdbc:postgresql://$DB/hint
