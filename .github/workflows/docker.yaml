@@ -53,7 +53,7 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           context: .
-          file: "./docker/Dockerfile"
+          file: "Dockerfile"
           push: true
           tags: |
             ${{env.TAG_DB_DH}}:${{steps.extract_branch.outputs.CI_BRANCH}}
@@ -64,7 +64,7 @@ jobs:
         if: github.event_name != 'pull_request'
         with:
           context: .
-          file: "./docker/Dockerfile"
+          file: "Dockerfile"
           push: true
           tags: |
             ${{env.TAG_DB_DH}}:latest
@@ -76,7 +76,7 @@ jobs:
         uses: docker/build-push-action@v6
         if: github.event_name == 'pull_request'
         with:
-          context: .
+          context: migrations
           file: "./migrations/Dockerfile"
           load: true
           tags: |
@@ -87,7 +87,7 @@ jobs:
         uses: docker/build-push-action@v6
         if: github.event_name != 'pull_request'
         with:
-          context: .
+          context: migrations
           file: "./migrations/Dockerfile"
           load: true
           tags: |
@@ -107,7 +107,7 @@ jobs:
         uses: docker/build-push-action@v6
         if: github.event_name == 'pull_request'
         with:
-          context: .
+          context: migrations
           file: "./migrations/Dockerfile"
           push: true
           tags: |
@@ -118,7 +118,7 @@ jobs:
         uses: docker/build-push-action@v6
         if: github.event_name != 'pull_request'
         with:
-          context: .
+          context: migrations
           file: "./migrations/Dockerfile"
           push: true
           tags: |
