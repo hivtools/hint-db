@@ -9,8 +9,6 @@ trap cleardocker EXIT
 NETWORK=hint-db
 DB=db
 
-TAG_DB="mrcide/hint-db:${GIT_ID}"
-
 docker network create $NETWORK
 
 docker run --rm -d \
@@ -23,5 +21,5 @@ docker run --rm -d \
 # Need to give the database a little time to initialise before we can run the migrations
 docker exec -it $DB wait-for-db
 docker run --rm --network=$NETWORK \
-  $TAG_SHA \
+  $TAG_MIGRATION \
   -url=jdbc:postgresql://$DB/hint
