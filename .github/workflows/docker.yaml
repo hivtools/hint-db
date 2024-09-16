@@ -9,8 +9,8 @@ on:
 env:
   TAG_DB_DH: mrcide/hint-db
   TAG_MIGRATION_DH: mrcide/hint-db-migrate
-  TAG_DB_GHCR: mrc-ide/hint-db
-  TAG_MIGRATION_GHCR: mrc-ide/hint-db-migrate
+  TAG_DB_GHCR: hivtools/hint-db
+  TAG_MIGRATION_GHCR: hivtools/hint-db-migrate
 
 jobs:
   docker:
