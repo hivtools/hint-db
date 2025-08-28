@@ -1,4 +1,4 @@
-FROM postgres:10.3
+FROM postgres:17
 COPY bin /hint-bin
 ENV PATH="/hint-bin:$PATH"
 ENV POSTGRES_DB hint
@@ -14,7 +14,7 @@ RUN cat /etc/hint/postgresql.conf /etc/hint/postgresql.test.conf.in > \
 RUN cat /etc/hint/postgresql.conf /etc/hint/postgresql.production.conf.in > \
         /etc/hint/postgresql.production.conf
 RUN chown -R postgres:postgres /etc/hint
-RUN ./docker-entrypoint.sh --version
+RUN docker-entrypoint.sh --version
 
 ENTRYPOINT ["/hint-bin/start-with-config.sh"]
 CMD ["/etc/hint/postgresql.conf"]
