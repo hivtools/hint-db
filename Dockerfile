@@ -1,4 +1,4 @@
-FROM postgres:10.3
+FROM postgres:18
 COPY bin /hint-bin
 ENV PATH="/hint-bin:$PATH"
 ENV POSTGRES_DB hint
