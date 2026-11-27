@@ -2,8 +2,8 @@
 -- the memory of the server.
 --
 -- The cookie holds a random session id. This table holds only the SHA-256 of it, so a copy of the table cannot be used
--- to log in. The Python API checks `expires_at` and the absolute limit (from `created_at`) in each query that reads a
--- row, so an old row that is still here does not let anyone in.
+-- to log in. The Python API checks `expires_at`, the absolute limit (from `created_at`) and `access_token_expires_at`
+-- each time it reads a row, so an old row that is still here does not let anyone in.
 CREATE TABLE web_session
 (
     id_hash                 BYTEA PRIMARY KEY,
@@ -13,7 +13,7 @@ CREATE TABLE web_session
     -- (Fernet, with a key that is not in the database), so a copy of the table does not give anyone the token. Never
     -- sent to the browser
     access_token            TEXT,
-    -- When Auth0 says the token stops working. NULL if Auth0 did not say
+    -- When Auth0 says the token stops working, which ends the session. NULL if Auth0 did not say
     access_token_expires_at TIMESTAMPTZ,
     created_at              TIMESTAMPTZ NOT NULL,
     expires_at              TIMESTAMPTZ NOT NULL
