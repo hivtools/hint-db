@@ -12,7 +12,7 @@ CREATE TABLE web_session
     -- The Auth0 access token of a single sign-on user, with which the API calls ADR as them. It is encrypted by the API
     -- (Fernet, with a key that is not in the database), so a copy of the table does not give anyone the token. Never
     -- sent to the browser
-    encrypted_access_token  TEXT,
+    access_token            TEXT,
     -- When Auth0 says the token stops working. NULL if Auth0 did not say
     access_token_expires_at TIMESTAMPTZ,
     created_at              TIMESTAMPTZ NOT NULL,
