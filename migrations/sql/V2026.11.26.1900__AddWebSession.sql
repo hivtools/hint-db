@@ -6,16 +6,17 @@
 -- row, so an old row that is still here does not let anyone in.
 CREATE TABLE web_session
 (
-    id_hash      BYTEA PRIMARY KEY,
-    -- NULL for a visitor who has not logged in: a guest, or someone who is logging in now
-    user_id      TEXT REFERENCES users (id) ON DELETE CASCADE,
-    -- The Auth0 access token of a single sign-on user, with which the API calls ADR as them. Never sent to the browser
-    access_token TEXT,
-    -- During a login with Auth0 only: the OAuth state that the callback must give back, and the page to open after it
-    oauth_state  TEXT,
-    redirect_to  TEXT,
-    created_at   TIMESTAMPTZ NOT NULL,
-    expires_at   TIMESTAMPTZ NOT NULL
+    id_hash                 BYTEA PRIMARY KEY,
+    -- NULL for a guest
+    user_id                 TEXT REFERENCES users (id) ON DELETE CASCADE,
+    -- The Auth0 access token of a single sign-on user, with which the API calls ADR as them. It is encrypted by the API
+    -- (Fernet, with a key that is not in the database), so a copy of the table does not give anyone the token. Never
+    -- sent to the browser
+    encrypted_access_token  TEXT,
+    -- When Auth0 says the token stops working. NULL if Auth0 did not say
+    access_token_expires_at TIMESTAMPTZ,
+    created_at              TIMESTAMPTZ NOT NULL,
+    expires_at              TIMESTAMPTZ NOT NULL
 )
     -- Requests move expires_at on (at most every few minutes). Space on the page lets Postgres do that without moving
     -- the row (a HOT update), as no index has expires_at in it
